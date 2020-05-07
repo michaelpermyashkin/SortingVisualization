@@ -1,0 +1,25 @@
+body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+#menu {
+    height: 100vh;
+    position: relative;
+    left: 0;
+    border-right: 2px whitesmoke solid;
+    padding-top: 90px;
+    padding-left: 30px;
+}
+
+#visualizer {
+    display: flex;
+    flex-direction: row;
+}
+
+#visualizer .bar {
+    width: 50px;
+    border: 1px rgb(133, 133, 133) solid;
+    margin: 1px;
+}
