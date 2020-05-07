@@ -31,3 +31,7 @@ function generateSortedArray() {
     a = [];
     a = createSortedArray(visualizerArea, val, colors);
 }
+
+function runSort() {
+    bubbleSort(a);
+}

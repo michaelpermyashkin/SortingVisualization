@@ -1,8 +1,3 @@
-const arr = []
-for (var i = 0, t = 40; i < t; i++) {
-    arr.push(Math.round(Math.random() * t))
-}
-
 function swap(arr, a, b) {
     var temp = arr[a];
     arr[a] = arr[b];
@@ -10,7 +5,7 @@ function swap(arr, a, b) {
 }
 
 /************* BubbleSort ****************/
-function bubbleSort(array) {
+async function bubbleSort(array) {
     var length = array.length;
     var swapped = true;
     while (swapped) {
@@ -22,9 +17,4 @@ function bubbleSort(array) {
             }
         }
     }
-    return array;
 };
-
-var array_bubblesort = arr.slice()
-array_bubblesort = bubbleSort(array_bubblesort)
-console.log('BUBBLESORT:', ...array_bubblesort)

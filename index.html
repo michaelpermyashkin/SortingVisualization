@@ -23,17 +23,17 @@
         <hr>
         <div class="row">
             <div class="col-lg-4">
+                <!-- Set array size -->
+                <div id="setArraySize">
+                    <h5>Enter array size</h5>
+                    <input type="number" class="form-control" id="enter-size-input" value=100 placeholder="enter number of elements...">
+                </div>
                 <!-- Generate the array -->
-                <h5>Generate</h5>
-                <div id="generateArray">
+                <div id="generateArray" style="margin-top: 2.5vh;">
+                    <h5>Generate</h5>
                     <button class="btn btn-secondary text-center" onclick="generateUnsortedArray() ">Unsorted</button>
                     <button class="btn btn-secondary" onclick="generateSortedArray()">Sorted</button>
                     <button class="btn btn-secondary" onclick="generateReverseArray()">Reverse</button>
-                </div>
-                <!-- Set array size -->
-                <div id="setArraySize">
-                    <h5 style="margin-top: 2.5vh;">Enter array size</h5>
-                    <input type="number" class="form-control" id="enter-size-input" value=100 placeholder="enter number of elements...">
                 </div>
                 <!-- Set speed -->
                 <div id="chooseSpeed">
@@ -50,7 +50,7 @@
                 </div>
                 <br>
                 <!-- Run sort - need function to run selected algorithm -->
-                <button class="btn btn-success">Sort Arrays</button>
+                <button class="btn btn-success" onclick="runSort()">Sort Arrays</button>
             </div>
             <div class="col-lg-8" id="visualizer">
 
@@ -60,6 +60,7 @@
 
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="algorithms/bubblesort.js"></script>
 
     <script src="builder.js"></script>
     <script src="application.js"></script>

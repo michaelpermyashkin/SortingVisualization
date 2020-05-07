@@ -1,7 +1,6 @@
 function createBarElement(parent, height, colors) {
     let bar = document.createElement("div");
     bar.style.height = height + "px";
-    bar.style.width = 10 + "px";
     bar.style.backgroundColor = colors[0];
     bar.classList.add('bar')
 

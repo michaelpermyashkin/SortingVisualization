@@ -19,7 +19,7 @@ body {
 }
 
 #visualizer .bar {
-    width: 50px;
+    width: 10px;
     border: 1px rgb(133, 133, 133) solid;
     margin: 1px;
 }
