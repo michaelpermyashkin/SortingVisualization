@@ -1,20 +1,18 @@
-function swap(arr, a, b) {
-    var temp = arr[a];
-    arr[a] = arr[b];
-    arr[b] = temp;
-}
-
 /************* BubbleSort ****************/
 async function bubbleSort(array) {
     var length = array.length;
-    var swapped = true;
-    while (swapped) {
-        swapped = false;
-        for (var i = 0; i < length; i++) {
-            if (array[i] > array[i + 1]) {
-                swap(array, i, i + 1);
-                swapped = true;
+    for (let i = 0; i < length; i++) {
+        for (let j = 0; j < length - i - 1; j++) {
+            if (array[j].val > array[j + 1].val) {
+                swap(array, j, j + 1);
+                await new Promise(resolve => setTimeout(resolve, 1));
             }
         }
     }
 };
+
+// var array_mergesort = [3, 5, 7, 4, 3, 6, 8, 6, 7, 4, 3];
+ 
+// array_mergesort = bubbleSort(array_mergesort);
+ 
+// console.log('BUBBLESORT: ', ...array_mergesort);

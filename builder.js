@@ -24,7 +24,6 @@ function createReverseArray(parent, size, colors) {
     let arr = [];
     for (let i = size; i > 0; i--) {
         let value = Math.floor(i * 3 + 40);
-        console.log(value);
         addEventListener
         arr.push(createBarElement(parent, value, colors));
     }

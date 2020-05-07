@@ -32,6 +32,15 @@ function generateSortedArray() {
     a = createSortedArray(visualizerArea, val, colors);
 }
 
-function runSort() {
-    bubbleSort(a);
+async function runSort() {
+    await bubbleSort(a);
+}
+
+function swap(arr, a, b) {
+    let temp = {...arr[a] };
+    arr[a].div.style.height = arr[b].val + "px";
+    arr[a].val = arr[b].val;
+
+    arr[b].div.style.height = temp.val + "px";
+    arr[b].val = temp.val;
 }
