@@ -1,8 +1,25 @@
+* {
+    transition: all .15s ease-in-out;
+}
+
+#visualizer * {
+    transition: none;
+}
+
 body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
 }
+
+.btn:focus,
+.btn:active {
+    outline: none !important;
+    box-shadow: none;
+}
+
+
+/* Container that holds all setting controls */
 
 #menu {
     height: 100vh;
@@ -13,6 +30,33 @@ body {
     padding-left: 30px;
 }
 
+
+/* Algorithm selection menu */
+
+#algorithmSelection li {
+    background-color: rgb(247, 247, 247);
+}
+
+#algorithmSelection li a {
+    color: rgb(120, 105, 105);
+}
+
+
+/* Array size input field */
+
+#setArraySize input {
+    width: 20%;
+    margin-left: 40%;
+}
+
+button {
+    background-color: 'rgb(142, 211, 158)';
+    color: '#FFF';
+}
+
+
+/* Container where sorting is animated */
+
 #visualizer {
     display: flex;
     flex-direction: row;
@@ -20,6 +64,5 @@ body {
 
 #visualizer .bar {
     width: 10px;
-    border: 1px rgb(133, 133, 133) solid;
     margin: 1px;
 }

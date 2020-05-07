@@ -7,10 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body onload="init()">
     <nav class="navbar navbar-expand navbar-dark bg-dark">
         <a class="navbar-brand m-auto" href="#">Sorting Visualizer</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,49 +23,75 @@
         <br>
         <hr>
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-4 text-center">
+                <!-- Choose algorithm -->
+                <div id="algorithmSelection">
+                    <h5>Algorithm selection</h5>
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" id="bubblesort" onclick="setAlgorithmSelection('bubblesort')">Bubblesort</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="bubblesort-optimized" onclick="setAlgorithmSelection('bubblesort-optimized')">Bubblesort (Optimized)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " id="quicksort" onclick="setAlgorithmSelection('quicksort')">Quicksort</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="mergesort" onclick="setAlgorithmSelection('mergesort')">Mergesort</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="heapsort" onclick="setAlgorithmSelection('heapsort')">Heapsort</a>
+                        </li>
+                    </ul>
+                </div>
+                <hr>
                 <!-- Set array size -->
-                <div id="setArraySize">
+                <div id="setArraySize" style="margin-top: 2.5vh;">
                     <h5>Enter array size</h5>
                     <input type="number" class="form-control" id="enter-size-input" value=100 placeholder="enter number of elements...">
                 </div>
+                <hr>
                 <!-- Generate the array -->
                 <div id="generateArray" style="margin-top: 2.5vh;">
                     <h5>Generate</h5>
-                    <button class="btn btn-secondary text-center" onclick="generateUnsortedArray() ">Unsorted</button>
-                    <button class="btn btn-secondary" onclick="generateSortedArray()">Sorted</button>
-                    <button class="btn btn-secondary" onclick="generateReverseArray()">Reverse</button>
+                    <button class="btn btn-light" id="unsorted" onclick="setArrayCondition('unsorted')">Unsorted</button>
+                    <button class="btn btn-light" id="sorted" onclick="setArrayCondition('sorted')">Sorted</button>
+                    <button class="btn btn-light" id="reverse" onclick="setArrayCondition('reverse')">Reverse</button>
                 </div>
+                <hr>
                 <!-- Set speed -->
                 <div id="chooseSpeed">
                     <h5 style="margin-top: 2.5vh;">Select speed setting</h5>
                     <label class="radio-inline">
-                        <input type="radio" name="optradio"> slow 
+                        <input type="radio" name="speedSetting" value="slow" onchange="setSpeedSetting()"> slow 
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="optradio" checked> medium 
+                        <input type="radio" name="speedSetting" value="medium" onchange="setSpeedSetting()" checked> medium 
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="optradio"> fast 
+                        <input type="radio" name="speedSetting" value="fast" onchange="setSpeedSetting()"> fast 
                     </label>
                 </div>
-                <br>
+                <hr>
                 <!-- Run sort - need function to run selected algorithm -->
-                <button class="btn btn-success" onclick="runSort()">Sort Arrays</button>
+                <button class="btn btn-dark" id="btn-runSort" onclick="runSort()">Sort Array</button>
+                <br>
+                <br>
             </div>
-            <div class="col-lg-8" id="visualizer">
-
-            </div>
+            <div class="col-xl-8" id="visualizer"></div>
         </div>
+        <hr>
     </div>
 
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="algorithms/bubblesort.js"></script>
+    <script src="algorithms/bubblesort-optimized.js"></script>
 
     <script src="builder.js"></script>
     <script src="application.js"></script>
 
 </body>
 
-</html4
+</html>
