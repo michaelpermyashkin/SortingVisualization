@@ -1,5 +1,5 @@
 /************* BubbleSort ****************/
-async function bubbleSort(array, sleepTimeMS) {
+async function bubbleSort(array, sleepTimeMS, totalComparisons) {
     var length = array.length;
     for (let i = 0; i < length; i++) {
         for (let j = 0; j < length - i - 1; j++) {
@@ -9,11 +9,14 @@ async function bubbleSort(array, sleepTimeMS) {
                 await new Promise(resolve => setTimeout(resolve, sleepTimeMS));
                 await colorTwoElements(array, j, j + 1, 0); // reset to blue
             }
+            totalComparisons++;
+            await displayComparisonCount(totalComparisons);
         }
+        await colorOneElement(array, length - i - 1, 2);
     }
     // once complete we iterate through and set all bars to green
     for (let i = 0; i < array.length; i++) {
         await new Promise(resolve => setTimeout(resolve, sleepTimeMS));
-        await colorOneElement(array, i, 2);
+        await colorOneElement(array, i, 3);
     }
 };

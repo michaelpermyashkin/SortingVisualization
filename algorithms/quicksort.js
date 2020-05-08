@@ -1,47 +1,40 @@
-const arr = []
-for (var i = 0, t = 40; i < t; i++) {
-    arr.push(Math.round(Math.random() * t))
-}
-
-function swap(arr, a, b) {
-    var temp = arr[a];
-    arr[a] = arr[b];
-    arr[b] = temp;
-}
-
-function partition(array, left, right) {
-    var pivot = array[Math.floor((right + left) / 2)];
-    i = left;
-    j = right;
-    while (i <= j) {
-        while (array[i] < pivot) {
-            i++;
+async function partition(arr, left, right, time, tempCounter) {
+    let p = arr[right];
+    let pivot = left - 1;
+    for (let j = left; j < right; j++) {
+        if (arr[j].val < p.val) {
+            pivot++;
+            await colorTwoElements(arr, j, pivot, 1)
+            swap(arr, j, pivot);
+            await new Promise(resolve => setTimeout(resolve, time));
+            await colorTwoElements(arr, j, pivot, 1);
         }
-        while (array[j] > pivot) {
-            j--;
-        }
-        if (i <= j) {
-            swap(array, i, j);
-            i++;
-            j--;
-        }
+        tempCounter++;
+        // await displayComparisonCount(tempCounter);
     }
-    return i;
+    swap(arr, right, pivot + 1);
+    await colorOneElement(arr, pivot + 1, 2)
+    await new Promise(resolve => setTimeout(resolve, time));
+    return pivot + 1;
 }
 
-function quickSort(array, left, right) {
-    var index;
-    if (array.length > 1) {
-        index = partition(array, left, right);
-        if (left < index - 1) {
-            quickSort(array, left, index - 1);
-        }
-        if (index < right) {
-            quickSort(array, index, right);
-        }
+async function quickSort(arr, l, h, time, tempCounter) {
+    if (l < h) {
+        let pivot = await partition(arr, l, h, time);
+        await colorOneElement(arr, pivot, 4);
+        await quickSort(arr, l, pivot - 1, time);
+        await quickSort(arr, pivot + 1, h, time);
+        await colorOneElement(arr, pivot, 2);
     }
-    return array;
+    tempCounter++;
+    // await displayComparisonCount(tempCounter);
 }
-var array_quicksort = arr.slice();
-array_quicksort = quickSort(array_quicksort, 0, array_quicksort.length - 1)
-console.log('QUICKSORT: ', ...array_quicksort);
+
+async function quickSortRunner(arr, time, totalComparisons) {
+    let tempCounter = 0;
+    await quickSort(arr, 0, arr.length - 1, time, tempCounter);
+    for (let i = 0; i < arr.length; i++) {
+        colorOneElement(arr, i, 3);
+        await new Promise(resolve => setTimeout(resolve, time));
+    }
+}
