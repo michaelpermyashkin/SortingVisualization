@@ -1,5 +1,4 @@
-/************* BubbleSort ****************/
-async function bubbleSortOptimized(array, sleepTimeMS, totalComparisons) {
+async function bubbleSortOptimized(array, sleepTimeMS) {
     var length = array.length;
     var swapped = false;
     for (let i = 0; i < length; i++) {
@@ -11,17 +10,14 @@ async function bubbleSortOptimized(array, sleepTimeMS, totalComparisons) {
                 await new Promise(resolve => setTimeout(resolve, sleepTimeMS));
                 await colorTwoElements(array, j, j + 1, 0);
             }
-            totalComparisons++;
-            displayComparisonCount(totalComparisons);
         }
         if (!swapped)
             break;
-        await colorOneElement(array, length - i - 1, 2);
-
+        await colorOneElement(array, length - i - 1, 2); // colored green, now in place
     }
     // once complete we iterate through and set all bars to green
     for (let i = 0; i < array.length; i++) {
         await colorOneElement(array, i, 3);
-        await new Promise(resolve => setTimeout(resolve, sleepTimeMS));
+        await new Promise(resolve => setTimeout(resolve, sleepTimeMS / 2));
     }
 }

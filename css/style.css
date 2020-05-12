@@ -2,9 +2,10 @@
     transition: all .15s ease-in-out;
 }
 
-#visualizer * {
+
+/* #visualizer * {
     transition: none;
-}
+} */
 
 body {
     overflow-x: hidden;

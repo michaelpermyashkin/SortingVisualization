@@ -5,6 +5,7 @@ let green = 'rgb(88, 214, 141)';
 let complete = 'rgb(171, 235, 198)';
 let yellow = 'rgb(248, 196, 113)';
 let colors = [blue, red, green, complete, yellow];
+let arrCondition = 'unsorted'
 let a = createUnsortedArray(visualizerArea, 100, colors); // generate unsorted by default
 let sleepTimeMS = 25; // speed set to medium by default
 let algorithmSelection = "bubblesort"; // bubblesort set by default
@@ -12,6 +13,8 @@ let totalComparisons = 0;
 
 function init() {
     // initialize display with default selections
+    setSpeedSetting();
+    setArrayCondition(arrCondition);
     document.getElementById('bubblesort').style.backgroundColor = 'rgb(142, 211, 158)';
     document.getElementById('bubblesort').style.color = '#FFF';
     document.getElementById('unsorted').style.backgroundColor = 'rgb(142, 211, 158)';
@@ -19,6 +22,8 @@ function init() {
 }
 
 function setAlgorithmSelection(selection) {
+    setSpeedSetting();
+    setArrayCondition(arrCondition);
     algorithmSelection = selection;
     // clear highlighted selection 
     var x = document.getElementById("algorithmSelection").querySelectorAll(".nav-link");
@@ -67,12 +72,15 @@ function setArrayCondition(condition) {
     document.getElementById(condition).style.color = '#FFF';
     switch (condition) {
         case 'unsorted':
+            arrCondition = 'unsorted';
             generateUnsortedArray();
             break;
         case 'sorted':
+            arrCondition = 'sorted';
             generateSortedArray();
             break;
         case 'reverse':
+            arrCondition = 'reverse';
             generateReverseArray();
             break;
     }
@@ -80,21 +88,19 @@ function setArrayCondition(condition) {
 
 async function runSort() {
     totalComparisons = 0;
+    setArrayCondition(arrCondition);
     switch (algorithmSelection) {
         case 'bubblesort':
-            await bubbleSort(a, sleepTimeMS, totalComparisons);
+            await bubbleSort(a, sleepTimeMS);
             break;
         case 'bubblesort-optimized':
-            await bubbleSortOptimized(a, sleepTimeMS, totalComparisons);
+            await bubbleSortOptimized(a, sleepTimeMS);
             break;
         case 'quicksort':
-            await quickSortRunner(a, sleepTimeMS, totalComparisons);
-            break;
-        case 'heapsort':
-            await bubbleSort(a, sleepTimeMS, totalComparisons);
+            await quickSortRunner(a, sleepTimeMS);
             break;
         case 'mergesort':
-            await bubbleSort(a, sleepTimeMS, totalComparisons);
+            await mergeSortRunner(a, sleepTimeMS);
             break;
     }
 }
@@ -148,6 +154,11 @@ async function colorTwoElements(arr, a, b, colorIndex) {
 // colors a single element
 async function colorOneElement(arr, a, colorIndex) {
     arr[a].div.style.backgroundColor = colors[colorIndex];
+}
+
+function copyAllProperties(dest, src) {
+    dest.div.style.height = src.val + "px";
+    dest.val = src.val;
 }
 
 async function displayComparisonCount(count) {
