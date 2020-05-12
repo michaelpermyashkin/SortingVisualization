@@ -22,6 +22,7 @@ function init() {
 }
 
 function setAlgorithmSelection(selection) {
+    totalComparisons = 0;
     setSpeedSetting();
     setArrayCondition(arrCondition);
     algorithmSelection = selection;
@@ -38,6 +39,7 @@ function setAlgorithmSelection(selection) {
 
 
 function setSpeedSetting() {
+    totalComparisons = 0;
     let setting;
     var radioButtons = document.getElementsByName('speedSetting');
     for (i = 0; i < radioButtons.length; i++) {
@@ -61,6 +63,7 @@ function setSpeedSetting() {
 }
 
 function setArrayCondition(condition) {
+    totalComparisons = 0;
     // clear highlighted selection 
     var x = document.getElementById("generateArray").querySelectorAll(".btn");
     for (let i = 0; i < x.length; i++) {

@@ -1,13 +1,16 @@
-async function bubbleSort(array, sleepTimeMS, totalComparisons) {
+async function bubbleSort(array, sleepTimeMS) {
+    totalComparisons = 0;
     var length = array.length;
     for (let i = 0; i < length; i++) {
         for (let j = 0; j < length - i - 1; j++) {
+            await colorTwoElements(array, j, j + 1, 1); // color red before swap
+            totalComparisons++;
+            displayComparisonCount(totalComparisons);
             if (array[j].val > array[j + 1].val) {
-                await colorTwoElements(array, j, j + 1, 1); // color red before swap
                 swap(array, j, j + 1);
-                await new Promise(resolve => setTimeout(resolve, sleepTimeMS));
-                await colorTwoElements(array, j, j + 1, 0); // reset to blue
             }
+            await new Promise(resolve => setTimeout(resolve, sleepTimeMS));
+            await colorTwoElements(array, j, j + 1, 0); // reset to blue
         }
         await colorOneElement(array, length - i - 1, 2); // color green, now in place
     }

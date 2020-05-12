@@ -1,16 +1,21 @@
 async function bubbleSortOptimized(array, sleepTimeMS) {
+    totalComparisons = 0;
     var length = array.length;
     var swapped = false;
     for (let i = 0; i < length; i++) {
         for (let j = 0; j < length - i - 1; j++) {
+            await colorTwoElements(array, j, j + 1, 1);
+            totalComparisons++;
+            displayComparisonCount(totalComparisons);
             if (array[j].val > array[j + 1].val) {
                 swapped = true;
-                await colorTwoElements(array, j, j + 1, 1);
                 swap(array, j, j + 1);
-                await new Promise(resolve => setTimeout(resolve, sleepTimeMS));
-                await colorTwoElements(array, j, j + 1, 0);
             }
+            await new Promise(resolve => setTimeout(resolve, sleepTimeMS));
+            await colorTwoElements(array, j, j + 1, 0);
         }
+        totalComparisons++;
+        displayComparisonCount(totalComparisons);
         if (!swapped)
             break;
         await colorOneElement(array, length - i - 1, 2); // colored green, now in place
