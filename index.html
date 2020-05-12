@@ -13,17 +13,21 @@
 
 <body onload="init()">
     <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand m-auto" href="#">Sorting Visualizer</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav m-auto">
+                <li class="nav-item"><a class="nav-link text-capitalize text-light" style="font-size: 1.5em;"> Sorting Visualizer</a></li>
+                <li class="nav-item" style="border-left: 2px solid #888; padding-top: 2.5%;"><a class="nav-link" href="https://michaelpermyashkin.github.io/">Visit Portfolio</a></li>
+            </ul>
         </div>
     </nav>
     <div class="container">
         <br>
         <hr>
         <div class="row">
-            <div class="col-xl-4 text-center">
+            <div class="col-lg-4 text-center">
                 <!-- Choose algorithm -->
                 <div id="algorithmSelection" onMouseOver="this.style.cursor='pointer'">
                     <h5>Algorithm selection</h5>
@@ -79,13 +83,16 @@
                 <br>
                 <br>
             </div>
-            <div class="col-xl-8">
+            <div class="col-lg-8">
                 <div class="text-center" id="displayTotalComparisons">Total Comparisions: 0</div>
                 <div id="visualizer"></div>
             </div>
         </div>
+        <br>
+        <br>
         <hr>
     </div>
+    <div class="footer" style="padding-top: 30vh;"></div>
 
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
