@@ -105,6 +105,9 @@ async function runSort() {
         case 'mergesort':
             await mergeSortRunner(a, sleepTimeMS);
             break;
+        case 'insertionsort':
+            await insertionSortRunner(a, sleepTimeMS);
+            break;
     }
 }
 
